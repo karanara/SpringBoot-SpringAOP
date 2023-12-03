@@ -27,6 +27,6 @@ public class AopdemoApplication {
 	private void demoMethodForAOP(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		// TODO Auto-generated method stub
 		accountDAO.addAccount();
-		membershipDAO.addMemberAccount();
+		System.out.println(membershipDAO.addMemberAccount());
 	}
 }
