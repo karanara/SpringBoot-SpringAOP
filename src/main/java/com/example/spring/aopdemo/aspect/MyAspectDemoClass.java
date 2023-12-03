@@ -10,16 +10,20 @@ import org.springframework.stereotype.Component;
 public class MyAspectDemoClass {
 
 	@Pointcut("execution(* com.example.spring.aopdemo.dao.*.*(..))")
-	public void AdviceForPackage() {}
+	private void AdviceForPackage() {}
 	
+    @Pointcut("execution(* com.example.spring.aopdemo.dao.*.get*(..))")
+	private void getter() {}
 	
-	@Before("AdviceForPackage()")
+	@Pointcut("execution(* com.example.spring.aopdemo.dao.*.set*(..))")
+	private void setter() {}
+	
+	@Pointcut("AdviceForPackage() && !(getter() || setter())")
+	private void adviceForNoSetterAndGetter() {}
+	
+	@Before("adviceForNoSetterAndGetter()")
 	public void BeforeMethodExecution() {
 		System.out.println("Execution-------------- using before advice  Aspect Oriented Programming");
-		
-	}
-	@Before("AdviceForPackage()")
-	public void PerformAPIDesign() {
-		System.out.println("Performing api deisgn at Before advice");
+	
 	}
 }

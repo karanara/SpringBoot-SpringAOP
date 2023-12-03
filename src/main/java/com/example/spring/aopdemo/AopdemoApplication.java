@@ -29,6 +29,10 @@ public class AopdemoApplication {
 		// TODO Auto-generated method stub
 		Account account= new Account("ramya","karanam");
 		accountDAO.addAccount(account,true);
+		accountDAO.setName("Joshna");
+		accountDAO.setServiceCode("123");
+		System.out.println(accountDAO.getName());
+		System.out.println(accountDAO.getServiceCode());
 		System.out.println(membershipDAO.addMemberAccount());
 	}
 }
