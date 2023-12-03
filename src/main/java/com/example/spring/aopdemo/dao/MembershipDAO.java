@@ -2,5 +2,5 @@ package com.example.spring.aopdemo.dao;
 
 public interface MembershipDAO {
  
-	public void addAccount();
+	public void addMemberAccount();
 }

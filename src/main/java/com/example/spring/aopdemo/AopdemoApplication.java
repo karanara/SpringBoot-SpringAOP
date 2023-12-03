@@ -19,8 +19,14 @@ public class AopdemoApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO) {
 		
 		return  runner->{
-			accountDAO.addAccount();
-			membershipDAO.addAccount();
+			
+			demoMethodForAOP(accountDAO,membershipDAO);
 		};
+	}
+
+	private void demoMethodForAOP(AccountDAO accountDAO, MembershipDAO membershipDAO) {
+		// TODO Auto-generated method stub
+		accountDAO.addAccount();
+		membershipDAO.addMemberAccount();
 	}
 }

@@ -8,7 +8,7 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public void addAccount() {
 		// TODO Auto-generated method stub
-		System.out.println("Excecution of a account method in AOP");
+		System.out.println(getClass() + " AccountDAO Method");
 
 	}
 
