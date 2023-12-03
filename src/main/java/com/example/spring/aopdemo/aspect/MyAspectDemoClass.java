@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyAspectDemoClass {
 
-	@Before("execution(public void addAccount())")
+	@Before("execution(public void com.example.spring.aopdemo.dao.AccountDAO.addAccount())")
 	public void BeforeMethodExecution() {
 		System.out.println("Execution-------------- using before advice  Aspect Oriented Programming");
 		
