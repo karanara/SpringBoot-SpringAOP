@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.example.spring.aopdemo.dao.Account;
 import com.example.spring.aopdemo.dao.AccountDAO;
 import com.example.spring.aopdemo.dao.MembershipDAO;
 
@@ -26,7 +27,8 @@ public class AopdemoApplication {
 
 	private void demoMethodForAOP(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 		// TODO Auto-generated method stub
-		accountDAO.addAccount();
+		Account account= new Account("ramya","karanam");
+		accountDAO.addAccount(account,true);
 		System.out.println(membershipDAO.addMemberAccount());
 	}
 }
