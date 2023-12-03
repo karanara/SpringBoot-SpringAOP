@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import com.example.spring.aopdemo.dao.AccountDAO;
+import com.example.spring.aopdemo.dao.MembershipDAO;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -15,10 +16,11 @@ public class AopdemoApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO) {
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO) {
 		
 		return  runner->{
 			accountDAO.addAccount();
+			membershipDAO.addAccount();
 		};
 	}
 }
