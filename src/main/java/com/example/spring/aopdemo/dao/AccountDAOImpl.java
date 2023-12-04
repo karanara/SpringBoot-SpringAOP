@@ -1,5 +1,8 @@
 package com.example.spring.aopdemo.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -33,6 +36,16 @@ public class AccountDAOImpl implements AccountDAO {
 		// TODO Auto-generated method stub
 		System.out.println(getClass() + " AccountDAO Method");
 
+	}
+
+	@Override
+	public List<Account> findAccounts() {
+		// TODO Auto-generated method stub
+		List<Account> accounts = new ArrayList<>();
+		accounts.add(new Account("joshna","karanam"));
+		accounts.add(new Account("package","center"));
+		accounts.add(new Account("Spring","Tools"));
+		return accounts;
 	}
 
 }

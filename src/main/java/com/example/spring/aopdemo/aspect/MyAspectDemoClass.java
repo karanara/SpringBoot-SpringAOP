@@ -1,6 +1,9 @@
 package com.example.spring.aopdemo.aspect;
 
+import java.util.List;
+
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -14,6 +17,14 @@ import com.example.spring.aopdemo.dao.Account;
 @Component
 @Order(3)
 public class MyAspectDemoClass {
+	
+	@AfterReturning(pointcut="execution(* com.example.spring.aopdemo.dao.AccountDAO.findAccounts(..))",returning="result")
+	public void AfterReturningAdviceMethodExecution(JoinPoint joinPoint,List<Account> result) {
+		String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AfterReturning on method: " + method);
+
+        System.out.println("\n=====>>> result is: " + result);
+	}
 	
 	@Before("com.example.spring.aopdemo.aspect.PointCutExpression.adviceForNoSetterAndGetter()")
 	public void BeforeMethodExecution(JoinPoint joinPoint) {

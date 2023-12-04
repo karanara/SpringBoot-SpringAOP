@@ -1,5 +1,7 @@
 package com.example.spring.aopdemo;
 
+import java.util.List;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,8 +23,16 @@ public class AopdemoApplication {
 		
 		return  runner->{
 			
-			demoMethodForAOP(accountDAO,membershipDAO);
+			demoMethodForAfterAdvice(accountDAO);
+			//demoMethodForAOP(accountDAO,membershipDAO);
 		};
+	}
+
+	private void demoMethodForAfterAdvice(AccountDAO accountDAO) {
+		// TODO Auto-generated method stub
+		List<Account> accounts = accountDAO.findAccounts();
+		System.out.println("Accounts: : " + accounts);
+		
 	}
 
 	private void demoMethodForAOP(AccountDAO accountDAO, MembershipDAO membershipDAO) {
