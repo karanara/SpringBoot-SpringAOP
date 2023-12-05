@@ -23,12 +23,26 @@ public class AopdemoApplication {
 		
 		return  runner->{
 			
-			demoMethodForAfterAdvice(accountDAO);
+			//demoMethodForAfterAdvice(accountDAO);
 			//demoMethodForAOP(accountDAO,membershipDAO);
+			demoMethodAfterThrowing(accountDAO);
 		};
 	}
 
-	private void demoMethodForAfterAdvice(AccountDAO accountDAO) {
+	private void demoMethodAfterThrowing(AccountDAO accountDAO) {
+		// TODO Auto-generated method stub
+		List<Account> accounts=null;
+		try {
+			boolean tripWise=true;
+			accounts=accountDAO.findAccounts(tripWise);
+		}
+		catch(Exception e) {
+			System.out.println("Execution of exception in main method  "+e);
+		}
+		System.out.println("Accounts in main method throw example  "+accounts);
+	}
+
+	private void demoMethodForAfterReturningAdvice(AccountDAO accountDAO) {
 		// TODO Auto-generated method stub
 		List<Account> accounts = accountDAO.findAccounts();
 		System.out.println("Accounts: : " + accounts);

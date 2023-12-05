@@ -41,6 +41,14 @@ public class AccountDAOImpl implements AccountDAO {
 	@Override
 	public List<Account> findAccounts() {
 		// TODO Auto-generated method stub
+		return findAccounts(false);
+	}
+	@Override
+	public List<Account> findAccounts(boolean tripWise) {
+		// TODO Auto-generated method stub
+		if(tripWise==true) {
+			throw new RuntimeException("Calling exception in AccountDAOImpl");
+		}
 		List<Account> accounts = new ArrayList<>();
 		accounts.add(new Account("joshna","karanam"));
 		accounts.add(new Account("package","center"));

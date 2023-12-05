@@ -10,4 +10,5 @@ public interface AccountDAO {
 	public String getName();
 	public String getServiceCode();
 	List<Account> findAccounts();
+	List<Account> findAccounts(boolean tripWise);
 }
