@@ -1,6 +1,7 @@
 package com.example.spring.aopdemo.aspect;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -24,6 +25,14 @@ public class MyAspectDemoClass {
         System.out.println("\n=====>>> Executing @AfterReturning on method: " + method);
 
         System.out.println("\n=====>>> result is: " + result);
+        result = result.stream()
+                .map(temp -> {
+                    temp.setFirstName(temp.getFirstName().toUpperCase());
+                    return temp;
+                })
+                .collect(Collectors.toList());
+
+        System.out.println("Modified Result after preprocessing " + result); 
 	}
 	
 	@Before("com.example.spring.aopdemo.aspect.PointCutExpression.adviceForNoSetterAndGetter()")
