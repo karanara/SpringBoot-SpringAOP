@@ -20,7 +20,7 @@ public class AopdemoApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO,FortuneService fortuneService) {
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO,FortuneService fortuneService)  {
 		
 		return  runner->{
 			
@@ -29,8 +29,23 @@ public class AopdemoApplication {
 			//demoMethodAfterThrowing(accountDAO);
 			//demoMethodAfterFinally(accountDAO);
 			//demoMethodAroundAdvice(fortuneService);
-			demoMethodAroundAdviceHandleException(fortuneService);
+			//demoMethodAroundAdviceHandleException(fortuneService);
+			 try {
+				demoMethodAroundRethrowException(fortuneService);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		};
+	}
+
+	private void demoMethodAroundRethrowException(FortuneService fortuneService)throws Throwable {
+		// TODO Auto-generated method stub
+		System.out.println("Calling Around Advice REthrow  Exception");
+		System.out.println("calling target method -get Fortune");
+		boolean tripWise=true;
+		String result=fortuneService.getFortune(tripWise);
+		System.out.println("Printing the result in around advice  rethrow exception main method " + result);
 	}
 
 	private void demoMethodAroundAdviceHandleException(FortuneService fortuneService) {

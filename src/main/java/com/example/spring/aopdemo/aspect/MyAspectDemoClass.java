@@ -33,7 +33,8 @@ public class MyAspectDemoClass {
             output = proceedingJoinPoint.proceed();
         }catch(Exception e) {
         	System.out.println("Exception in AroundAdviceHandleMethodException   "+e);
-        	output="handled exception with advice of Around in AOP";
+        	//output="handled exception with advice of Around in AOP";
+        	throw e;//rethrow the exception
         }
         
         long end = System.currentTimeMillis();
