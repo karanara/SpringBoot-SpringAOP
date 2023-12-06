@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import com.example.spring.aopdemo.dao.Account;
 import com.example.spring.aopdemo.dao.AccountDAO;
 import com.example.spring.aopdemo.dao.MembershipDAO;
+import com.example.spring.aopdemo.service.FortuneService;
 
 @SpringBootApplication
 public class AopdemoApplication {
@@ -19,15 +20,24 @@ public class AopdemoApplication {
 	}
 
 	@Bean 
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO) {
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,MembershipDAO membershipDAO,FortuneService fortuneService) {
 		
 		return  runner->{
 			
 			//demoMethodForAfterAdvice(accountDAO);
 			//demoMethodForAOP(accountDAO,membershipDAO);
 			//demoMethodAfterThrowing(accountDAO);
-			demoMethodAfterFinally(accountDAO);
+			//demoMethodAfterFinally(accountDAO);
+			demoMethodAroundAdvice(fortuneService);
 		};
+	}
+
+	private void demoMethodAroundAdvice(FortuneService fortuneService) {
+		// TODO Auto-generated method stub
+		System.out.println("Calling Around Advice");
+		System.out.println("calling target method -get Fortune");
+		String result=fortuneService.getFortune();
+		System.out.println("Printing the result in around advice main method " + result);
 	}
 
 	private void demoMethodAfterFinally(AccountDAO accountDAO) {
