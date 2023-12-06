@@ -18,4 +18,13 @@ public class FortuneServiceImpl implements FortuneService {
 		return "AOP practice in Springboot udemy";
 	}
 
+	@Override
+	public String getFortune(boolean tripWise) {
+		// TODO Auto-generated method stub
+		if(tripWise) {
+			throw new RuntimeException("Handling Exception Example through around advice");
+		}
+		return getFortune();
+	}
+
 }

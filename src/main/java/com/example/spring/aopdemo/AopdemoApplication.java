@@ -28,8 +28,18 @@ public class AopdemoApplication {
 			//demoMethodForAOP(accountDAO,membershipDAO);
 			//demoMethodAfterThrowing(accountDAO);
 			//demoMethodAfterFinally(accountDAO);
-			demoMethodAroundAdvice(fortuneService);
+			//demoMethodAroundAdvice(fortuneService);
+			demoMethodAroundAdviceHandleException(fortuneService);
 		};
+	}
+
+	private void demoMethodAroundAdviceHandleException(FortuneService fortuneService) {
+		// TODO Auto-generated method stub
+		System.out.println("Calling Around Advice Handle Exception");
+		System.out.println("calling target method -get Fortune");
+		boolean tripWise=true;
+		String result=fortuneService.getFortune(tripWise);
+		System.out.println("Printing the result in around advice  handle exception main method " + result);
 	}
 
 	private void demoMethodAroundAdvice(FortuneService fortuneService) {

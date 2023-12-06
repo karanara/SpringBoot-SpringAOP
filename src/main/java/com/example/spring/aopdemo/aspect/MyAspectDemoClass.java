@@ -24,6 +24,24 @@ import com.example.spring.aopdemo.dao.Account;
 public class MyAspectDemoClass {
 	
 	@Around("execution(* com.example.spring.aopdemo.service.*.*(..))")
+	public Object AroundAdviceHandleExceptionMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+		String method = proceedingJoinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AroundAdviceHandleException on method: " + method);
+        long start = System.currentTimeMillis();
+        Object output=null;
+        try {
+            output = proceedingJoinPoint.proceed();
+        }catch(Exception e) {
+        	System.out.println("Exception in AroundAdviceHandleMethodException   "+e);
+        	output="handled exception with advice of Around in AOP";
+        }
+        
+        long end = System.currentTimeMillis();
+        System.out.println("Duration : "+(end-start));
+		return output;
+	}
+	
+	@Around("execution(* com.example.spring.aopdemo.service.*.*(..))")
 	public Object AroundAdviceMethod(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 		String method = proceedingJoinPoint.getSignature().toShortString();
         System.out.println("\n=====>>> Executing @AroundAdvice on method: " + method);
