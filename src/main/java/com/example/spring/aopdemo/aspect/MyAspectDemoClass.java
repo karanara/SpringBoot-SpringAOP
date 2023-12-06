@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,6 +20,12 @@ import com.example.spring.aopdemo.dao.Account;
 @Component
 @Order(3)
 public class MyAspectDemoClass {
+	
+	@After("execution(* com.example.spring.aopdemo.dao.AccountDAO.findAccounts(..))")
+	public void AfterReturningAdviceMethodExecution(JoinPoint joinPoint) {
+		String method = joinPoint.getSignature().toShortString();
+        System.out.println("\n=====>>> Executing @AfterReturning on method: " + method);
+	}
 	
 	@AfterThrowing(pointcut="execution(* com.example.spring.aopdemo.dao.AccountDAO.findAccounts(..))",throwing="Exc")
 	public void AfterThrowingAdviceMethodExecution(JoinPoint joinPoint,Throwable Exc) {

@@ -25,8 +25,24 @@ public class AopdemoApplication {
 			
 			//demoMethodForAfterAdvice(accountDAO);
 			//demoMethodForAOP(accountDAO,membershipDAO);
-			demoMethodAfterThrowing(accountDAO);
+			//demoMethodAfterThrowing(accountDAO);
+			demoMethodAfterFinally(accountDAO);
 		};
+	}
+
+	private void demoMethodAfterFinally(AccountDAO accountDAO) {
+		// TODO Auto-generated method stub
+		List<Account> accounts=null;
+		try {
+			//boolean tripWise=true; for failure case 
+			boolean tripWise=false;// success case
+			accounts=accountDAO.findAccounts(tripWise);
+		}
+		catch(Exception e) {
+			System.out.println("Execution of exception in main method  "+e);
+		}
+		System.out.println("Accounts in main method throw example  "+accounts);
+
 	}
 
 	private void demoMethodAfterThrowing(AccountDAO accountDAO) {
